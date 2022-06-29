@@ -1,0 +1,46 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>weather app</title>
+</head>
+
+<body style="background-color: rgb(28, 136, 136);">
+    <center>
+        <h1> &#x2601 WEATHER DETECTOR &#x2602
+            <hr style="width:50%;">
+        </h1>
+
+        <br><br><br><br>
+        <div class="container">
+
+            <form action="" method="POST" class="search">
+                {%csrf_token%}
+                <input type="text" placeholder="City" style="height: 2rem; width:40%;border-radius:.2rem" name="city">
+                <button type="submit" style="background-color:rgb(255, 255, 255);height: 2rem;margin:.1rem">
+                    &#x1F50D
+                </button>
+            </form>
+
+            {% if data.country_code %}
+            <div class="content" style=" width:40%; ">
+                <div style="text-align:left;color:azure">
+                    <h2>{{city|capfirst}}</h2>
+                    <h3>country code:{{data.country_code}}</h3>
+                    <h4>coordinate:{{data.coordinate}}</h4>
+                    <h4>temp:{{data.temp}}</h4>
+                    <h4>pressure:{{data.pressure}}</h4>
+                    <h4>humidity:{{data.humidity}}</h4>
+                </div>
+            </div>
+            {%endif%}
+        </div>
+    </center>
+</body>
+
+</html>
